@@ -1,0 +1,74 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Extensiones</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Inicio</a>
+            </li>
+            <li>
+                <a>Extensiones</a>
+            </li>
+            <li class="active">
+                <strong>Lista</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Extensiones </h5>
+
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-5 m-b-xs">
+                    </div>
+                    <div class="col-sm-4 m-b-xs">
+                        
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control" ng-model="ExtensionlCntrl.search"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary" ng-click="ExtensionlCntrl.onSubmit()"> Buscar!</button> </span></div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Extension</th>
+                            <th>Estado</th>
+                            <th>Asignada</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="extension in ExtensionlCntrl.extensions">
+                            <td>{{extension.number}}</td>
+                            <td>{{extension.status.name}}</td>
+                            <td><span ng-if="extension.assigned">{{extension.commercial.name}}</span><span ng-if="!extension.assigned">Sin asignar</span></td>
+                            <td>
+                                <button ng-if="extension.commercial.id" ng-click="ExtensionlCntrl.unasigned(extension, $index)" class="btn btn-danger " type="button"><i class="fa fa-trash-o "></i>&nbsp;Liberar extension</button>
+                                <button ng-if="extension.status.id == 1" ng-click="ExtensionlCntrl.changeStatus(extension, 0, $index)" class="btn btn-danger " type="button"><i class="fa fa-bell-o "></i>&nbsp;Desactivar</button>
+                                <button ng-if="extension.status.id == 0" ng-click="ExtensionlCntrl.changeStatus(extension, 1, $index)" class="btn btn-primary " type="button"><i class="fa fa-bell "></i>&nbsp;Activar</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <uib-pagination total-items="ExtensionlCntrl.total" ng-model="ExtensionlCntrl.page" max-size="ExtensionlCntrl.maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" ng-change="ExtensionlCntrl.pageChanged()" items-per-page="ExtensionlCntrl.limit"></uib-pagination>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

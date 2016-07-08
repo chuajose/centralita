@@ -1,0 +1,120 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Llamadas</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Inicio</a>
+            </li>
+            <li>
+                <a>Llamadas</a>
+            </li>
+            <li class="active">
+                <strong>Lista</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="ibox">
+            <div class="ibox-content">
+                <h5>Llamadas</h5>
+                <h1 class="no-margins">{{CallCntrl.total}}</h1>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox">
+            <div class="ibox-content">
+                <h5>Tiempo de llamada</h5>
+                <h1 class="no-margins">{{CallCntrl.duration | secondsToDateTime | date:'HH:mm:ss'}}</h1>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox">
+            <div class="ibox-content">
+                <h5>Tiempo medio de llamada</h5>
+                <h1 class="no-margins">{{CallCntrl.duration/ CallCntrl.total | secondsToDateTime | date:'HH:mm:ss'}}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ibox">
+            <div class="ibox-content">
+                <h5>Llamadas efectivas</h5>
+                <h1 class="no-margins">{{CallCntrl.more5}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Llamadas ({{CallCntrl.total}}) </h5>
+
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-4 m-b-xs">
+                        <select ng-change="CallCntrl.onSubmit()" chosen data-placeholder="Selecciona comercial" no-results-text="'No encontramos el comercial '" ng-options=" commercial.id as commercial.name  for commercial in CallCntrl.commercials" ng-model="CallCntrl.commercial_id" name="Comercial" placeholder="Comercial" class="w-100 form-control">
+                        <option selected="" value="">Seleccionar Comercial</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-4 m-b-xs">
+                         <input type="text" name="from" placeholder="Desde" value="" ng-disabled="false" ng-change="CallCntrl.onSubmit();" class="input-sm form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="CallCntrl.from"  is-open="open1" ng-click="open1=true" clear-text="Borrar" close-text="Cerrar" current-text="Hoy" show-weeks="false" datepicker-options="{startingDay:1, showWeeks: false}">
+                         
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                           
+
+                            <input type="text" name="to" placeholder="Hasta" value="" ng-disabled="false" ng-change="CallCntrl.onSubmit();" class="input-sm form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="CallCntrl.to"  is-open="open2" ng-click="open2=true" clear-text="Borrar" close-text="Cerrar" current-text="Hoy" show-weeks="false" datepicker-options="{startingDay:1, showWeeks: false}">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="CallCntrl.onSubmit()"> Buscar!</button> </span></div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Numero</th>
+                            <th>Extension</th>
+                            <th>Fecha</th>
+                            <th>Realizada por</th>
+                            <th>Duración</th>
+                            <th>Efectiva</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="call in CallCntrl.calls">
+                            <td>{{call.number}}</td>
+                            <td>{{call.ext}}</td>
+                            <td>{{call.date}} {{call.hour}}</td>
+                            <td>{{call.commercial.name}}</td>
+                            <td>{{call.duration | secondsToDateTime | date:'HH:mm:ss'}}</td>
+                            <td><a ng-if="call.duration > 299" href="javascript:void(0)"><i class="fa  fa-bullhorn text-navy"></i></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                       <uib-pagination total-items="CallCntrl.total" ng-model="CallCntrl.page" max-size="CallCntrl.maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" ng-change="CallCntrl.pageChanged()" items-per-page="CallCntrl.limit"></uib-pagination>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

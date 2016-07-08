@@ -1,0 +1,42 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+
+                <div class="profile-element" uib-dropdown>
+                    <img alt="image" class="img-circle" src="img/profile_small.jpg"/>
+                    <a uib-dropdown-toggle href>
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">{{$root.myUser.first_name}} {{$root.myUser.last_name}}</strong>
+                             </span>
+                                <span class="text-muted text-xs block">Administrador </span>
+                            </span>
+                    </a>
+                </div>
+                <div class="logo-element">
+                    Iber
+                </div>
+            </li>
+            <li ng-class="{active: $state.includes('dashboard')}">
+                <a ui-sref="app.dashboard"><i class="fa fa-th-large"></i> <span class="nav-label">Escritorio</span></a>
+            </li>
+            <li ng-class="{active: $state.includes('commercial')}">
+                <a ui-sref="app.commercial.list"><i class="fa fa-users"></i> <span class="nav-label">Comerciales</span></a>
+            </li>
+            <li ng-class="{active: $state.includes('extension')}">
+                <a ui-sref="app.extension.list"><i class="fa fa-mobile"></i> <span class="nav-label">Extensiones</span></a>
+            </li>
+            <li ng-class="{active: $state.includes('call')}">
+                <a ui-sref="app.call.list"><i class="fa fa-phone"></i> <span class="nav-label">Llamadas</span></a>
+            </li>
+            <li ng-class="{active: $state.includes('reports')}">
+                <a ui-sref="app.reports.list"><i class="fa fa-book"></i> <span class="nav-label">Informes</span></a>
+            </li>
+            <li ng-class="{active: $state.includes('reports')}">
+                <a ui-sref="app.register"><i class="fa  fa-user-secret"></i> <span class="nav-label">Admin</span></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

@@ -1,0 +1,116 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Informes</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Inicio</a>
+            </li>
+            <li>
+                <a>Informes</a>
+            </li>
+            <li class="active">
+                <strong>Selecciona</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Informes ({{ReportsCntrl.total}}) </h5>
+
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-4 m-b-xs">
+                        <select  chosen data-placeholder="Selecciona comercial" no-results-text="'No encontramos el comercial '" ng-options=" commercial.id as commercial.name  for commercial in ReportsCntrl.commercials" ng-model="ReportsCntrl.commercial_id" name="Comercial" placeholder="Comercial" class="w-100 form-control">
+                        <option selected="" value="">Seleccionar Comercial</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-4 m-b-xs">
+                         <input type="text" name="from" placeholder="Desde" value="" ng-disabled="false"  class="input-sm form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="ReportsCntrl.from"  is-open="open1" ng-click="open1=true" clear-text="Borrar" close-text="Cerrar" current-text="Hoy" show-weeks="false" datepicker-options="{startingDay:1, showWeeks: false}">
+                         
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                           
+
+                            <input type="text" name="to" placeholder="Hasta" value="" ng-disabled="false"  class="input-sm form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="ReportsCntrl.to"  is-open="open2" ng-click="open2=true" clear-text="Borrar" close-text="Cerrar" current-text="Hoy" show-weeks="false" datepicker-options="{startingDay:1, showWeeks: false}">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="ReportsCntrl.onSubmit()"> Buscar!</button> </span></div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Desde</th>
+                            <th>Hasta</th>
+                            <th>Comercial</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="report in ReportsCntrl.reports">
+                            <td>{{report.to}}</td>
+                            <td>{{report.from}}</td>
+                            <td>{{report.commercial.name}}</td>
+                            <td><a href="{{$root.BASEURL}}tmp/{{report.id}}.csv" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-check text-navy"></i> Descargalo</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                       
+                 <uib-pagination total-items="ReportsCntrl.total" ng-model="ReportsCntrl.page" max-size="ReportsCntrl.maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" ng-change="ReportsCntrl.pageChanged()" items-per-page="ReportsCntrl.limit"></uib-pagination>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Crear informe </h5>
+
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-4 m-b-xs">
+                        <select  chosen data-placeholder="Selecciona comercial" no-results-text="'No encontramos el comercial '" ng-options=" commercial.id as commercial.name  for commercial in ReportsCntrl.commercials" ng-model="ReportsCntrl.commercial_id" name="Comercial" placeholder="Comercial" class="w-100 form-control">
+                        <option selected="" value="">Seleccionar Comercial</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-2 m-b-xs">
+                         <input type="text" name="from" placeholder="Desde" value="" ng-disabled="false"  class="input-sm form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="ReportsCntrl.from"  is-open="open3" ng-click="open3=true" clear-text="Borrar" close-text="Cerrar" current-text="Hoy" show-weeks="false" datepicker-options="{startingDay:1, showWeeks: false}">
+                         
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                           
+                            <input type="text" name="to" placeholder="Hasta" value="" ng-disabled="false"  class="input-sm form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="ReportsCntrl.to"  is-open="open4" ng-click="open4=true" clear-text="Borrar" close-text="Cerrar" current-text="Hoy" show-weeks="false" datepicker-options="{startingDay:1, showWeeks: false}">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                                <button type="button" class="btn btn-sm btn-primary" ng-click="ReportsCntrl.onSubmitAdd()"> Generar Informe!</button> 
+                    </div>
+
+
+                </div>
+                <div class ="row" ng-if="ReportsCntrl.loading">
+                    <div class="col-sm-12"><uib-progressbar class="progress-striped active" max="100" value="100" type="info"><i>Cargando Datos</i></uib-progressbar></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

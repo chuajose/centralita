@@ -1,0 +1,103 @@
+<!--
+* INSPINIA - Responsive Admin Theme
+* Version 2.5
+*
+-->
+
+<!DOCTYPE html>
+<html ng-app="trocoWeb">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Page title set in pageTitle directive -->
+    <title page-title></title>
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Main Inspinia CSS files -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link id="loadBefore" href="css/style.css" rel="stylesheet">
+
+
+</head>
+
+<!-- ControllerAs syntax -->
+<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+<body  class="{{$state.current.data.specialClass}}" landing-scrollspy id="page-top">
+
+<!-- Main view  -->
+<div ui-view="app"></div>
+
+<!-- jQuery and Bootstrap -->
+<script src="bower_components/jquery/jquery-2.1.1.min.js"></script>
+<script src="bower_components/plugins/jquery-ui/jquery-ui.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!-- MetsiMenu -->
+<script src="bower_components/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+<!-- SlimScroll -->
+<script src="bower_components/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Peace JS -->
+<script src="bower_components/plugins/pace/pace.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+
+<!-- Main Angular scripts-->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular/angular-sanitize.js"></script>
+<script src="bower_components/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="bower_components/angular-translate/angular-translate.min.js"></script>
+<script src="bower_components/ui-router/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+<script src="bower_components/plugins/angular-idle/angular-idle.js"></script>
+<script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+<script src="bower_components/a0-angular-storage/dist/angular-storage.js"></script>
+
+
+
+<!-- Anglar App Script -->
+<script src="js/app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
+<script src="js/translations.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/filters.js"></script>
+
+
+<script src="modules/auth/js/auth.config.js"></script>
+<script src="modules/auth/js/auth.controller.js"></script>
+<script src="modules/auth/js/auth.factory.js"></script>
+
+<script src="modules/commercial/js/commercial.controller.js"></script>
+<script src="modules/commercial/js/commercial.config.js"></script>
+<script src="modules/commercial/js/commercial.factory.js"></script>
+
+
+<script src="modules/extension/js/extension.controller.js"></script>
+<script src="modules/extension/js/extension.config.js"></script>
+<script src="modules/extension/js/extension.factory.js"></script>
+
+
+<script src="modules/call/js/call.controller.js"></script>
+<script src="modules/call/js/call.config.js"></script>
+<script src="modules/call/js/call.factory.js"></script>
+
+<script src="modules/reports/js/reports.controller.js"></script>
+<script src="modules/reports/js/reports.config.js"></script>
+<script src="modules/reports/js/reports.factory.js"></script>
+
+</body>
+</html>

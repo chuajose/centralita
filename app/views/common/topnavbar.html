@@ -1,0 +1,39 @@
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <span minimaliza-sidebar></span>
+            
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <!--<li>-->
+                <!--<span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>-->
+            <!--</li>-->
+            
+            
+            <li>
+                <div ng-if="main.loadingCalls" class="sk-spinner sk-spinner-three-bounce">
+                    <div class="sk-bounce1"></div>
+                    <div class="sk-bounce2"></div>
+                    <div class="sk-bounce3"></div>
+                </div>
+            </li>
+            <li>
+                <a ng-if="!main.loadingCalls" ng-click="main.reloadCalls()">
+                    <i class="fa fa-refresh"></i> Recargar llamadas
+                </a>
+
+                 <a ng-if="main.loadingCalls" href="javascript:void(0)">
+                    <i class="fa fa-refresh"></i> Actualizando llamadas
+                </a>
+            </li>
+            
+            <li>
+                <a ng-click="main.logout()">
+                    <i class="fa fa-sign-out"></i> Log out
+                </a>
+            </li>
+            
+        </ul>
+
+    </nav>
+</div>
